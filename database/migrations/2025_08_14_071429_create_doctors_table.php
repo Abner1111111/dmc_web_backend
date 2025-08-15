@@ -4,22 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-       // Create or update migration
-Schema::create('doctors', function (Blueprint $table) {
-    $table->id();
-    $table->string('name');
-    $table->string('category');
-    $table->string('image')->nullable();
-    $table->json('schedule')->nullable();
-    $table->timestamps();
-});
+        // Create or update migration
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('category');
+            $table->string('image')->nullable();
+            $table->json('schedule')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

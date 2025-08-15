@@ -36,19 +36,17 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         try {
-            // Log the incoming request for debugging
             Log::info('Creating doctor with data:', $request->all());
 
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'category' => 'required|string|max:255',
-                'image' => 'nullable|string|max:2048', // Changed from 'url' to 'string'
+                'image' => 'nullable|string|max:2048',
                 'schedule' => 'nullable|array',
                 'schedule.*.day' => 'string|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
                 'schedule.*.time_range' => 'string|max:255',
             ]);
 
-            // Clean up the image field - remove if empty
             if (empty($validatedData['image'])) {
                 $validatedData['image'] = null;
             }
